@@ -1,13 +1,16 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from '../pages/home'
+import { Route, Routes } from 'react-router-dom';
+
+import BaseLayout from '../layout/BaseLayout';
+import Home from '../pages/Home';
 
 function MainRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route element={<BaseLayout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
     </Routes>
-  )
+  );
 }
 
-export default MainRoutes
+export default MainRoutes;
