@@ -48,12 +48,12 @@ function BaseLayout(props: Props) {
   const routesInformation = [
     {
       routeName: "Dashboard",
-      link: "dashboard",
+      link: "",
       icon: <IoHome />,
     },
     {
       routeName: "Transações",
-      link: "trasacoes",
+      link: "transacoes",
       icon: <IoIosSwitch />,
     },
     {
