@@ -1,23 +1,23 @@
-import './styles.css';
+import "./styles.css";
 
-import MenuIcon from '@mui/icons-material/Menu';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Toolbar from '@mui/material/Toolbar';
-import * as React from 'react';
-import { CiCreditCard1 } from 'react-icons/ci';
-import { FaRegChartBar } from 'react-icons/fa';
-import { IoIosSwitch } from 'react-icons/io';
-import { IoHome } from 'react-icons/io5';
-import { Outlet, useNavigate } from 'react-router-dom';
+import MenuIcon from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Toolbar from "@mui/material/Toolbar";
+import * as React from "react";
+import { CiCreditCard1 } from "react-icons/ci";
+import { FaRegChartBar } from "react-icons/fa";
+import { IoIosSwitch } from "react-icons/io";
+import { IoHome } from "react-icons/io5";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -94,7 +94,7 @@ function BaseLayout(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} className="bg-[#edf3fb] h-screen">
       <CssBaseline />
       <Toolbar>
         <IconButton
