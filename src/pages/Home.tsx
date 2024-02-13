@@ -19,13 +19,13 @@ function Home() {
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               value={paymentDate}
-              className="text-[14px]"
+              className="text-[14px] !rounded-full"
               onChange={handleChange}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
               <MenuItem value="">
-                <em>Datas</em>
+                <em>Selecione uma Data</em>
               </MenuItem>
               <MenuItem value={20}>Fevereiro - 2024</MenuItem>
               <MenuItem value={10}>Janeiro - 2024</MenuItem>
