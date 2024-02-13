@@ -13,10 +13,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
 import { CiCreditCard1 } from "react-icons/ci";
-import { FaPlus, FaRegChartBar } from "react-icons/fa";
+import { FaRegChartBar } from "react-icons/fa";
 import { IoIosSwitch } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import { Outlet, useNavigate } from "react-router-dom";
+import DropdownButton from "../components/DropdownButton";
 
 const drawerWidth = 240;
 
@@ -75,13 +76,7 @@ function BaseLayout(props: Props) {
     <div>
       <Toolbar />
       <div className="flex justify-start pl-4">
-        <button className="flex items-center gap-4 p-4 rounded-full text-white font-sans text-lg bg-[#373f51] w-fit min-w-[150px]
-        hover:opacity-80">
-          <span>
-            <FaPlus />
-          </span>{" "}
-          Novo
-        </button>
+        <DropdownButton/>
       </div>
       <List>
         {routesInformation.map(({ routeName, link, icon }) => (
