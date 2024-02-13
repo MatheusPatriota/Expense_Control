@@ -18,6 +18,7 @@ import { IoIosSwitch } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import { Outlet, useNavigate } from "react-router-dom";
 import DropdownButton from "../components/DropdownButton";
+import Logo from "../components/Logo";
 
 const drawerWidth = 240;
 
@@ -74,7 +75,7 @@ function BaseLayout(props: Props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Logo/>
       <div className="flex justify-start pl-4">
         <DropdownButton/>
       </div>
