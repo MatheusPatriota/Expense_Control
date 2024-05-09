@@ -1,8 +1,9 @@
 
 export interface ExpenseProps {
   expenseId: string,
-  name: string,
   userId: string,
+  creditCardId: string,
+  name: string,
   value: number,
   description: string,
   buyingDate: Date,
