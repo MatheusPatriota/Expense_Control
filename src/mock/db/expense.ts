@@ -23,8 +23,9 @@ export interface ExpenseProps {
 
 export const expense: ExpenseProps = {
   expenseId: "1",
-  name: "Almoço",
   userId: "1",
+  creditCardId: "1",
+  name: "Almoço",
   value: 25.00,
   description: "Almoço com amigos",
   buyingDate: new Date(),
