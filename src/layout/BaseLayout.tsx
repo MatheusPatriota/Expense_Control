@@ -1,24 +1,24 @@
-import "./styles.css";
+import './styles.css';
 
-import MenuIcon from "@mui/icons-material/Menu";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
-import * as React from "react";
-import { CiCreditCard1 } from "react-icons/ci";
-import { FaRegChartBar } from "react-icons/fa";
-import { IoIosSwitch } from "react-icons/io";
-import { IoHome } from "react-icons/io5";
-import { Outlet, useNavigate } from "react-router-dom";
-import DropdownButton from "../components/DropdownButton";
-import Logo from "../components/Logo";
+import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Toolbar from '@mui/material/Toolbar';
+import * as React from 'react';
+import { FaRegChartBar } from 'react-icons/fa';
+import { IoHome } from 'react-icons/io5';
+import { Outlet, useNavigate } from 'react-router-dom';
+
+import DropdownButton from '../components/DropdownButton';
+import Logo from '../components/Logo';
+import { IoIosSwitch } from 'react-icons/io';
 
 const drawerWidth = 240;
 
@@ -53,15 +53,15 @@ function BaseLayout(props: Props) {
       icon: <IoHome />,
     },
     {
-      routeName: "Transações",
-      link: "transacoes",
+      routeName: "Operações",
+      link: "operacoes",
       icon: <IoIosSwitch />,
     },
-    {
-      routeName: "Cartão de Crédito",
-      link: "cartao-de-credito",
-      icon: <CiCreditCard1 />,
-    },
+    // {
+    //   routeName: "Cartão de Crédito",
+    //   link: "cartao-de-credito",
+    //   icon: <CiCreditCard1 />,
+    // },
     {
       routeName: "Investimentos",
       link: "investimentos",

@@ -1,8 +1,8 @@
-import { Menu, MenuItem } from "@mui/material";
-import React, { useState } from "react";
-import { FaCreditCard, FaPlus } from "react-icons/fa";
-import { GrTransaction } from "react-icons/gr";
-import { PiChartLineUp, PiChartLineDown } from "react-icons/pi";
+import { Menu, MenuItem } from '@mui/material';
+import React, { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
+import { GrTransaction } from 'react-icons/gr';
+import { PiChartLineDown, PiChartLineUp } from 'react-icons/pi';
 
 const DropdownButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -56,14 +56,8 @@ const DropdownButton = () => {
         </MenuItem>
         <MenuItem onClick={handleClose} className="flex flex-row gap-4">
           <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
-            <FaCreditCard color="#5f54ff" />
-            Despesa de Cartão
-          </div>
-        </MenuItem>
-        <MenuItem onClick={handleClose} className="flex flex-row gap-4">
-          <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
             <GrTransaction color="#616161" />
-            Transferência
+            Investimento
           </div>
         </MenuItem>
       </Menu>
