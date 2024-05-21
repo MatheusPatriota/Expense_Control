@@ -8,6 +8,8 @@ import { CreateExpense } from '../api/Expense/CreateExpense';
 import { expense } from '../mock/db/expense';
 import { expenseType } from '../mock/db/expenseType';
 import { CreateExpenseType } from '../api/ExpenseType/CreateExpenseType';
+import { CreateIncome } from '../api/Income/CreateIncome';
+import { income } from '../mock/db/income';
 
 function Login() {
   return (
@@ -43,7 +45,7 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreateExpenseType(expenseType)}
+              onClick={() => CreateIncome(income)}
             >
               Entrar
             </button>
