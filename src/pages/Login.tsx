@@ -1,12 +1,14 @@
 import { Google } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import React from "react";
+import { CreateUser } from "../api/User/CreateUser";
+import { user } from "../mock/db/user";
 
 function Login() {
   return (
     <div className="p-10 w-screen h-screen flex ">
       <div className="flex w-full justify-center items-center flex-col ">
-        <div className="flex flex-col max-w-[50%] w-full items-center justify-center">
+        <div className="flex flex-col max-w-[40%] w-full items-center justify-center">
           <button className="p-2 bg-white rounded-md border-2 border-gray-400 w-full flex justify-evenly hover:opacity-70">
             <Google />
             Fazer login com o Gooogle
@@ -34,7 +36,10 @@ function Login() {
             <span className="text-xs">Mostrar Senha</span>
           </div>
           <div className="mt-4 w-full">
-            <button className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70">
+            <button
+              className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
+              onClick={() => CreateUser(user)}
+            >
               Entrar
             </button>
           </div>

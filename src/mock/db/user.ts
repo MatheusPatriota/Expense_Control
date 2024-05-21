@@ -1,5 +1,5 @@
 
-interface UserProps {
+export interface UserProps {
   userId: string,
   name: string,
   role: string,
