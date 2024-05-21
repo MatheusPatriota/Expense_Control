@@ -2,13 +2,6 @@ import { Google } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import React from 'react';
 
-import { CreateIncome } from '../api/Income/CreateIncome';
-import { income } from '../mock/db/income';
-import { paymentMethod } from '../mock/db/paymentMethod';
-import { CreatePaymentMethod } from '../api/PaymentMethod/CreatePaymentMethod';
-import { CreateInvestmentCategory } from '../api/InvestmentCategory/CreateInvestmentCategory';
-import { investmentCategory } from '../mock/db/investmentCategory';
-
 function Login() {
   return (
     <div className="p-10 w-screen h-screen flex ">
@@ -43,7 +36,6 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreateInvestmentCategory(investmentCategory)}
             >
               Entrar
             </button>

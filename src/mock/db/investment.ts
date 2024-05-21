@@ -1,4 +1,4 @@
-interface InvestmentProps {
+export interface InvestmentProps {
   investmentId: string,
   value: number,
   description: string,
