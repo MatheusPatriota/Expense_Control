@@ -1,8 +1,9 @@
-import { Google } from "@mui/icons-material";
-import { Divider } from "@mui/material";
-import React from "react";
-import { CreateUser } from "../api/User/CreateUser";
-import { user } from "../mock/db/user";
+import { Google } from '@mui/icons-material';
+import { Divider } from '@mui/material';
+import React from 'react';
+
+import { CreateCreditCard } from '../api/CreditCard/CreateCreditCard';
+import { creditCard } from '../mock/db/creditCard';
 
 function Login() {
   return (
@@ -38,7 +39,7 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreateUser(user)}
+              onClick={() => CreateCreditCard(creditCard)}
             >
               Entrar
             </button>

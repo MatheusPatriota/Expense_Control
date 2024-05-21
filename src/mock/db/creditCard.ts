@@ -1,4 +1,4 @@
-interface CreditCardProps{
+export interface CreditCardProps{
   creditCardId: string,
   name: string,
   description: string,
