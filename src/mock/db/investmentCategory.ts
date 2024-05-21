@@ -1,4 +1,4 @@
-interface InvestmentCategoryProps{
+export interface InvestmentCategoryProps{
   investmentCategoryId: string,
   name: string,
   description: string,

@@ -6,6 +6,8 @@ import { CreateIncome } from '../api/Income/CreateIncome';
 import { income } from '../mock/db/income';
 import { paymentMethod } from '../mock/db/paymentMethod';
 import { CreatePaymentMethod } from '../api/PaymentMethod/CreatePaymentMethod';
+import { CreateInvestmentCategory } from '../api/InvestmentCategory/CreateInvestmentCategory';
+import { investmentCategory } from '../mock/db/investmentCategory';
 
 function Login() {
   return (
@@ -41,7 +43,7 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreatePaymentMethod(paymentMethod)}
+              onClick={() => CreateInvestmentCategory(investmentCategory)}
             >
               Entrar
             </button>
