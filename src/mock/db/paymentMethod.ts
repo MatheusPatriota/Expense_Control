@@ -1,4 +1,4 @@
-interface PaymentMethodProps{
+export interface PaymentMethodProps{
   paymentMethodId: string,
   name: string,
   description: string,

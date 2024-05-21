@@ -2,14 +2,10 @@ import { Google } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 import React from 'react';
 
-import { CreateCreditCard } from '../api/CreditCard/CreateCreditCard';
-import { creditCard } from '../mock/db/creditCard';
-import { CreateExpense } from '../api/Expense/CreateExpense';
-import { expense } from '../mock/db/expense';
-import { expenseType } from '../mock/db/expenseType';
-import { CreateExpenseType } from '../api/ExpenseType/CreateExpenseType';
 import { CreateIncome } from '../api/Income/CreateIncome';
 import { income } from '../mock/db/income';
+import { paymentMethod } from '../mock/db/paymentMethod';
+import { CreatePaymentMethod } from '../api/PaymentMethod/CreatePaymentMethod';
 
 function Login() {
   return (
@@ -45,7 +41,7 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreateIncome(income)}
+              onClick={() => CreatePaymentMethod(paymentMethod)}
             >
               Entrar
             </button>
