@@ -4,6 +4,8 @@ import React from 'react';
 
 import { CreateCreditCard } from '../api/CreditCard/CreateCreditCard';
 import { creditCard } from '../mock/db/creditCard';
+import { CreateExpense } from '../api/Expense/CreateExpense';
+import { expense } from '../mock/db/expense';
 
 function Login() {
   return (
@@ -39,7 +41,7 @@ function Login() {
           <div className="mt-4 w-full">
             <button
               className="bg-purple-600 p-4 rounded-full text-white uppercase w-full hover:opacity-70"
-              onClick={() => CreateCreditCard(creditCard)}
+              onClick={() => CreateExpense(expense)}
             >
               Entrar
             </button>
