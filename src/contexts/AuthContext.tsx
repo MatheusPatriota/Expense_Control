@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { UserProps } from "../types/User";
-import { onAuthStateChanged, Unsubscribe, User } from "firebase/auth";
-import { auth } from "../server/firebase";
+import { createUserWithEmailAndPassword, onAuthStateChanged, Unsubscribe, User } from "firebase/auth";
+import { auth, db } from "../server/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { CreateUser } from "../api/User/CreateUser";
 
 interface AuthContextProviderProps {
   children: ReactNode;
@@ -38,9 +40,44 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     });
   }, []);
 
-  const SignUp = (email: string, password: string) => {
-    //implement sign up here - which is implemented below
-   }
+  const SignUp = async (email: string, password: string) => {
+    setLoading(true);
+  
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  
+      setFirebaseAuthUser(userCredential.user);
+
+      const newUser: UserProps = {
+        userId: userCredential.user.uid,
+        name: userCredential.user.email || '',
+        role: 'common',
+        email: email,
+        expense: [],
+        income: [],
+        totalMonthIncome: 0,
+      };
+
+      // Create user in Firestore
+      await CreateUser(newUser);
+      
+  
+      const userQuery = query(collection(db,'users'), where('email', '==', email));
+      const userDoc = await getDocs(userQuery);
+
+      if (userDoc.empty) {
+        console.log('No user found with email:', email);
+      } else {
+        const user = userDoc.docs[0].data();
+        console.log('User information:', user);
+      }
+    } catch (error) {
+      console.error('Error during signUp:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   
    //Sign in
    const  SignIn = async (email: string, password: string) => {
