@@ -1,6 +1,6 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../server/firebase";
-import { UserProps } from "../../mock/db/user";
+import { UserProps } from "../../types/User";
 
 export async function CreateUser(user: UserProps) {
   try {

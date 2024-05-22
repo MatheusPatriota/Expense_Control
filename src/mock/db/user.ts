@@ -1,13 +1,4 @@
-
-export interface UserProps {
-  userId: string,
-  name: string,
-  role: string,
-  email: string,
-  expense: string[],
-  income: string[],
-  totalMonthIncome: number,
-}
+import { UserProps } from "../../types/User";
 
 // one user can have a lot of expenses and incomes
 export const user: UserProps  = {
