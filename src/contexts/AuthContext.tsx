@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { UserProps } from "../types/User";
-import { createUserWithEmailAndPassword, onAuthStateChanged, Unsubscribe, User } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, Unsubscribe, User } from "firebase/auth";
 import { auth, db } from "../server/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { CreateUser } from "../api/User/CreateUser";
@@ -24,7 +24,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [firebaseAuthUser, setFirebaseAuthUser] = useState<User | null>(null);
   const [user, setUser] = useState<UserProps | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const unsubscribe: Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -69,6 +68,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         console.log('No user found with email:', email);
       } else {
         const user = userDoc.docs[0].data();
+        setUser(user as UserProps)
         console.log('User information:', user);
       }
     } catch (error) {
@@ -81,7 +81,29 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   
    //Sign in
    const  SignIn = async (email: string, password: string) => {
-    //implement sign in here - which is implemented below
+    setLoading(true);
+  
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  
+      setFirebaseAuthUser(userCredential.user);
+      console.log('User information:', userCredential.user);
+      const userQuery = query(collection(db,'users'), where('email', '==', email));
+      const userDoc = await getDocs(userQuery);
+
+      if (userDoc.empty) {
+        console.log('No user found with email:', email);
+      } else {
+        const user = userDoc.docs[0].data();
+        setUser(user as UserProps)
+        console.log('User information:', user);
+      }
+    } catch (error) {
+      console.error('Error during signUp:', error);
+    } finally {
+      setLoading(false);
+      
+    }
    }
   
    //Sign out
