@@ -5,9 +5,8 @@ import Home from "../pages/Home";
 import Investments from "../pages/Investments";
 import Transactions from "../pages/Transactions";
 import Login from "../pages/Login";
-import withAuth from "../routes/WithAuth"; // Import withAuth HOC
+import withAuth from "../routes/WithAuth"; 
 
-// Wrap the BaseLayout component with the withAuth HOC
 const ProtectedBaseLayout = withAuth(BaseLayout);
 
 function MainRoutes() {

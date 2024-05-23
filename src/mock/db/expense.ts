@@ -1,25 +1,4 @@
-
-export interface ExpenseProps {
-  expenseId: string,
-  userId: string,
-  creditCardId: string,
-  name: string,
-  value: number,
-  description: string,
-  buyingDate: Date,
-  isRecurrent: boolean,
-  expenseType: string,
-  paymentMethod: string,
-  isInstallments: boolean,
-  currentInstallment: number,
-  totalInstallments: number,
-  installmentValue: string,
-  modifiedAt?: Date,
-  createdAt?: Date,
-  deletedAt?: Date,
-  modifyBy?: string,
-}
-
+import { ExpenseProps } from "../../types/Expense";
 
 export const expense: ExpenseProps = {
   expenseId: "1",

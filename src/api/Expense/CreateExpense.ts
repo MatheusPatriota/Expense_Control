@@ -1,6 +1,6 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../server/firebase";
-import { ExpenseProps } from "../../mock/db/expense";
+import { ExpenseProps } from "../../types/Expense";
 
 export async function CreateExpense(expense: ExpenseProps) {
   try {
