@@ -5,6 +5,7 @@ import { CiCreditCard1 } from 'react-icons/ci';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 
 import Card from '../components/Card';
+import withAuth from '../routes/WithAuth';
 
 function Home() {
   const [paymentDate, setPaymentDate] = useState("");
@@ -67,4 +68,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default withAuth(Home);

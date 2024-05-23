@@ -1,10 +1,11 @@
 import { Google } from "@mui/icons-material";
 import { Divider } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../hooks/useAuth";
 import { useForm, SubmitHandler } from "react-hook-form";
+import WithAuth from "../routes/WithAuth";
 
 interface InputProps {
   email: string;
@@ -86,4 +87,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default WithAuth(Login);

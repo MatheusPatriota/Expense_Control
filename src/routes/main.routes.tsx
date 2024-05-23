@@ -1,15 +1,15 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
-import BaseLayout from '../layout/BaseLayout';
-import Home from '../pages/Home';
-import Investments from '../pages/Investments';
-import Transactions from '../pages/Transactions';
-import Login from '../pages/Login';
+import BaseLayout from "../layout/BaseLayout";
+import Home from "../pages/Home";
+import Investments from "../pages/Investments";
+import Transactions from "../pages/Transactions";
+import Login from "../pages/Login";
 
 function MainRoutes() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} index/>
+      <Route path="/login" element={<Login />} index />
       <Route element={<BaseLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/operacoes" element={<Transactions />} />

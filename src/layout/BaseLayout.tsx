@@ -1,24 +1,26 @@
-import './styles.css';
+import "./styles.css";
 
-import MenuIcon from '@mui/icons-material/Menu';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Toolbar from '@mui/material/Toolbar';
-import * as React from 'react';
-import { FaRegChartBar } from 'react-icons/fa';
-import { IoHome } from 'react-icons/io5';
-import { Outlet, useNavigate } from 'react-router-dom';
+import MenuIcon from "@mui/icons-material/Menu";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Toolbar from "@mui/material/Toolbar";
+import * as React from "react";
+import { FaRegChartBar } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+import { Outlet, useNavigate } from "react-router-dom";
 
-import DropdownButton from '../components/DropdownButton';
-import Logo from '../components/Logo';
-import { IoIosSwitch } from 'react-icons/io';
+import DropdownButton from "../components/DropdownButton";
+import Logo from "../components/Logo";
+import { IoIosSwitch } from "react-icons/io";
+import { Button } from "@mui/material";
+import { useAuth } from "../hooks/useAuth";
 
 const drawerWidth = 240;
 
@@ -31,6 +33,7 @@ function BaseLayout(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const navigate = useNavigate();
+  const { SignOut } = useAuth();
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -75,9 +78,9 @@ function BaseLayout(props: Props) {
 
   const drawer = (
     <div>
-      <Logo/>
+      <Logo />
       <div className="flex justify-start pl-4">
-        <DropdownButton/>
+        <DropdownButton />
       </div>
       <List>
         {routesInformation.map(({ routeName, link, icon }) => (
@@ -88,6 +91,7 @@ function BaseLayout(props: Props) {
             </ListItemButton>
           </ListItem>
         ))}
+        <Button onClick={() => SignOut()}>Sair</Button>
       </List>
     </div>
   );
