@@ -1,4 +1,5 @@
 import React from 'react'
+import withAuth from '../routes/WithAuth'
 
 function Investments() {
   return (
@@ -6,4 +7,4 @@ function Investments() {
   )
 }
 
-export default Investments
+export default withAuth(Investments)

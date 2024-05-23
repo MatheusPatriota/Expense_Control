@@ -24,11 +24,7 @@ import { useAuth } from "../hooks/useAuth";
 
 const drawerWidth = 240;
 
-interface Props {
-  window?: () => Window;
-}
-
-function BaseLayout(props: Props) {
+function BaseLayout(props: any) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -60,11 +56,6 @@ function BaseLayout(props: Props) {
       link: "operacoes",
       icon: <IoIosSwitch />,
     },
-    // {
-    //   routeName: "Cartão de Crédito",
-    //   link: "cartao-de-credito",
-    //   icon: <CiCreditCard1 />,
-    // },
     {
       routeName: "Investimentos",
       link: "investimentos",
