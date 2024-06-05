@@ -1,15 +1,4 @@
-export interface IncomeProps {
-  incomeId: string,
-  value: number,
-  description: string,
-  date: Date,
-  userId: string,
-  isMonthly?: boolean,
-  modifiedAt?: Date,
-  createdAt?: Date,
-  deletedAt?: Date,
-  modifyBy?: string,
-}
+import { IncomeProps } from "../../types/Income";
 
 export const income: IncomeProps = {
   incomeId: "1",

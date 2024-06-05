@@ -5,6 +5,7 @@ import { GrTransaction } from "react-icons/gr";
 import { PiChartLineDown, PiChartLineUp } from "react-icons/pi";
 import ExpenseDialog from "../DialogModal/ExpenseDialog";
 import InvestmentDialog from "../DialogModal/InvestmentDialog";
+import IncomeDialog from "../DialogModal/IncomeDialog";
 
 const DropdownButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,7 +21,7 @@ const DropdownButton = () => {
 
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
   const [isInvestmentModalOpen, setIsInvestmentModalOpen] = useState(false);
-
+  const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false);
   const handleOpenExpenseModal = () => {
     console.log("open expense modal");
     handleClose();
@@ -39,6 +40,15 @@ const DropdownButton = () => {
   const handleCloseInvestmentModal = () => {
     setIsInvestmentModalOpen(false);
   };
+
+  const handleOpenIncomeModal = () => {
+    console.log("open income modal");
+    setIsIncomeModalOpen(true);
+  };
+
+  const handleCloseIncomeModal = () => {
+    setIsIncomeModalOpen(false);
+  };
   return (
     <div>
       <ExpenseDialog
@@ -48,6 +58,10 @@ const DropdownButton = () => {
       <InvestmentDialog
         isOpen={isInvestmentModalOpen}
         handleClose={handleCloseInvestmentModal}
+      />
+      <IncomeDialog
+        isOpen={isIncomeModalOpen}
+        handleClose={handleCloseIncomeModal}
       />
       <button
         className="flex items-center gap-4 p-4 rounded-full text-white font-sans text-lg bg-[#373f51] w-fit min-w-[150px]
@@ -73,7 +87,7 @@ const DropdownButton = () => {
         }}
       >
         <MenuItem
-          onClick={() => console.log("receita")}
+          onClick={handleOpenIncomeModal}
           className="flex flex-row gap-4"
         >
           <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
