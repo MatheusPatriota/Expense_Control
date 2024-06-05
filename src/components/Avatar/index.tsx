@@ -18,7 +18,7 @@ function Avatar({ userInfo }: AvatarProps) {
       <div className="flex flex-col">
         <span className="font-bold">{userInfo.name}</span>
         <div>
-          Salário: <span className="font-semibold">R${userInfo.netSalary}</span>
+          Salário Bruto: <span className="font-semibold">R${userInfo.netSalary}</span>
         </div>
         <div className="flex flex-col">
           <div>Sistema de Distribuição de Gastos Escolhido</div>

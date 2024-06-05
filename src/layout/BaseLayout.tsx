@@ -21,6 +21,7 @@ import Logo from "../components/Logo";
 import { IoIosSwitch } from "react-icons/io";
 import { Button } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
+import { CreditCard, CurrencyExchange, MoneyOff } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -47,14 +48,29 @@ function BaseLayout(props: any) {
 
   const routesInformation = [
     {
-      routeName: "Dashboard",
+      routeName: "Informações Gerais",
       link: "",
       icon: <IoHome />,
     },
     {
-      routeName: "Operações",
-      link: "operacoes",
+      routeName: "Controle Anual",
+      link: "controle-anual",
       icon: <IoIosSwitch />,
+    },
+    {
+      routeName: "Ganhos",
+      link: "ganhos",
+      icon: <CurrencyExchange />,
+    },
+    {
+      routeName: "Gastos",
+      link: "gastos",
+      icon: <MoneyOff />,
+    },
+    {
+      routeName: "Cartões de Crédito",
+      link: "cartoes-de-credito",
+      icon: <CreditCard />,
     },
     {
       routeName: "Investimentos",
