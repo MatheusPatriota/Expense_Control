@@ -14,4 +14,6 @@ export interface UserProps {
   fixedExpensePercentage?: number,
   percentageSpentVariable?: number,
   percentageSpentInvestment?: number,
+  grossSalary?: number,
+  netSalary?: number,
 }

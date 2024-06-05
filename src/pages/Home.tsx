@@ -102,7 +102,7 @@ function Home() {
       </div>
       <div className=" mt-4 mb-4 flex gap-4">
         {usersInfo.map((user, index) => (
-          <Avatar key={index} name={user.name} imageURL={user.imageURL || ""} />
+          <Avatar key={index} userInfo={user} />
         ))}
       </div>
       <div className="flex gap-2 flex-wrap mt-4">
