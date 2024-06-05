@@ -1,18 +1,61 @@
-import { FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { useState } from 'react';
-import { AiFillBank } from 'react-icons/ai';
-import { CiCreditCard1 } from 'react-icons/ci';
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import { AiFillBank } from "react-icons/ai";
+import { CiCreditCard1 } from "react-icons/ci";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
-import Card from '../components/Card';
-import withAuth from '../routes/WithAuth';
+import Card from "../components/Card";
+import withAuth from "../routes/WithAuth";
+import Avatar from "../components/Avatar";
+import { GetAllFamilyMembers } from "../api/Family/GetAllFamilyMembers";
+import { useAuth } from "../hooks/useAuth";
+
+export interface FamilyMemberProps {
+  familyName: string;
+  familyMembers: string[];
+}
 
 function Home() {
   const [paymentDate, setPaymentDate] = useState("");
+  const [familyMembers, setFamilyMembers] = useState<FamilyMemberProps | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const { user } = useAuth();
 
   const handleChange = (event: SelectChangeEvent) => {
     setPaymentDate(event.target.value);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      if (user?.familyId) {
+        try {
+          const members = await GetAllFamilyMembers(user.familyId);
+          setFamilyMembers(members);
+        } catch (error) {
+          console.error("Failed to fetch family members", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+
+    if (user) {
+      fetchData();
+    } else {
+      setLoading(false);
+    }
+  }, [user]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="flex justify-center">
@@ -36,7 +79,14 @@ function Home() {
         </div>
       </div>
       <div>
-        <h1 className="text-[32px] font-medium">Dashboard</h1>
+        <h1 className="text-[32px] font-medium">
+          Controle Financeiro - {familyMembers?.familyName}
+        </h1>
+      </div>
+      <div className=" mt-4 mb-4 flex gap-4">
+        <Avatar />
+        <Avatar />
+        <Avatar />
       </div>
       <div className="flex gap-2 flex-wrap mt-4">
         <Card

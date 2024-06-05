@@ -2,6 +2,7 @@ export interface ExpenseProps {
   expenseId: string;
   userId: string;
   creditCardId: string;
+  expenseBelongsTo: string
   name: string;
   value: number;
   description: string;

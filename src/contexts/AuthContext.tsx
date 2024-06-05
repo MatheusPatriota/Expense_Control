@@ -32,19 +32,32 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [firebaseAuthUser, setFirebaseAuthUser] = useState<User | null>(null);
   const [user, setUser] = useState<UserProps | null>(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const unsubscribe: Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe: Unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setFirebaseAuthUser(currentUser);
       if (currentUser) {
-        setFirebaseAuthUser(currentUser);
+        const userQuery = query(
+          collection(db, "users"),
+          where("email", "==", currentUser.email)
+        );
+        const userDoc = await getDocs(userQuery);
+
+        if (!userDoc.empty) {
+          const userData = userDoc.docs[0].data() as UserProps;
+          setUser(userData);
+        } else {
+          setUser(null);
+        }
       } else {
-        setFirebaseAuthUser(null);
+        setUser(null);
       }
       setLoading(false);
-
-      return () => {
-        if (unsubscribe) unsubscribe();
-      };
     });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const SignUp = async (email: string, password: string) => {
@@ -119,7 +132,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         console.log("User information:", user);
       }
     } catch (error) {
-      console.error("Error during signUp:", error);
+      console.error("Error during signIn:", error);
     } finally {
       setLoading(false);
     }

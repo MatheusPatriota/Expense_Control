@@ -112,6 +112,27 @@ function ExpenseDialog({ isOpen, handleClose }: ExpenseDialogContentProps) {
             )}
           </div>
           <div className="flex flex-col gap-2 mt-2">
+            <span className="text-sm">Gasto pertence á:</span>
+            <div className="flex gap-4">
+              <select
+                {...register("expenseBelongsTo", { required: true })}
+                className="border-2 rounded-md border-gray-400 p-1 w-[400px]"
+              >
+                <option value="Matheus">Matheus</option>
+                <option value="Ana">Ana</option>
+                <option value="MatheuseAna">Matheus e Ana</option>
+              </select>
+              <button className="rounded-full p-1 bg-[#6cbd72]  hover:opacity-70 flex justify-center items-center h-[30px] w-[30px]">
+                <Add sx={{ color: "#fff" }} fontSize="small" />
+              </button>
+            </div>
+            {errors.expenseBelongsTo && (
+              <span className="text-red-500 text-xs">
+                Gasto pertence á é Obrigatório
+              </span>
+            )}
+          </div>
+          <div className="flex flex-col gap-2 mt-2">
             <span className="text-sm">Loja de Compra</span>
             <div className="flex gap-4">
               <select
@@ -176,8 +197,8 @@ function ExpenseDialog({ isOpen, handleClose }: ExpenseDialogContentProps) {
             </div>
           )}
           <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button type="submit">Agree</Button>
+            <Button onClick={handleClose} color="error">Cancelar</Button>
+            <Button type="submit">Cadastrar</Button>
           </DialogActions>
         </form>
       </DialogContent>
