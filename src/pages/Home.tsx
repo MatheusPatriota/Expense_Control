@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import {
   FormControl,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import { AiFillBank } from "react-icons/ai";
 import { CiCreditCard1 } from "react-icons/ci";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
@@ -14,6 +14,8 @@ import withAuth from "../routes/WithAuth";
 import Avatar from "../components/Avatar";
 import { GetAllFamilyMembers } from "../api/Family/GetAllFamilyMembers";
 import { useAuth } from "../hooks/useAuth";
+import { UserProps } from "../types/User";
+import { GetAllUserInfoFromFamilyMembers } from "../api/Family/GetAllUserInfoFromFamilyMembers";
 
 export interface FamilyMemberProps {
   familyName: string;
@@ -22,7 +24,10 @@ export interface FamilyMemberProps {
 
 function Home() {
   const [paymentDate, setPaymentDate] = useState("");
-  const [familyMembers, setFamilyMembers] = useState<FamilyMemberProps | null>(null);
+  const [familyMembers, setFamilyMembers] = useState<FamilyMemberProps | null>(
+    null
+  );
+  const [usersInfo, setUsersInfo] = useState<UserProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   const { user } = useAuth();
@@ -37,11 +42,23 @@ function Home() {
         try {
           const members = await GetAllFamilyMembers(user.familyId);
           setFamilyMembers(members);
+          if (members) {
+            console.log("Family members:", members.familyMembers)
+            if (members.familyMembers.length > 0) {
+              const usersInfo = await GetAllUserInfoFromFamilyMembers(
+                members.familyMembers
+              );
+              console.log("Users info:", usersInfo)
+              setUsersInfo(usersInfo);
+            }
+          }
         } catch (error) {
-          console.error("Failed to fetch family members", error);
+          console.error("Failed to fetch family members or user info", error);
         } finally {
           setLoading(false);
         }
+      } else {
+        setLoading(false);
       }
     }
 
@@ -84,9 +101,9 @@ function Home() {
         </h1>
       </div>
       <div className=" mt-4 mb-4 flex gap-4">
-        <Avatar />
-        <Avatar />
-        <Avatar />
+        {usersInfo.map((user, index) => (
+          <Avatar key={index} name={user.name} imageURL={user.imageURL || ""} />
+        ))}
       </div>
       <div className="flex gap-2 flex-wrap mt-4">
         <Card

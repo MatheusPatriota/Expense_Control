@@ -11,4 +11,7 @@ export interface UserProps {
   createdAt?: Date,
   modifiedAt?: Date,
   deletedAt?: Date,
+  fixedExpensePercentage?: number,
+  percentageSpentVariable?: number,
+  percentageSpentInvestment?: number,
 }
