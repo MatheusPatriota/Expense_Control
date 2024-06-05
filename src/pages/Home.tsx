@@ -16,6 +16,7 @@ import { GetAllFamilyMembers } from "../api/Family/GetAllFamilyMembers";
 import { useAuth } from "../hooks/useAuth";
 import { UserProps } from "../types/User";
 import { GetAllUserInfoFromFamilyMembers } from "../api/Family/GetAllUserInfoFromFamilyMembers";
+import { Add } from "@mui/icons-material";
 
 export interface FamilyMemberProps {
   familyName: string;
@@ -43,12 +44,12 @@ function Home() {
           const members = await GetAllFamilyMembers(user.familyId);
           setFamilyMembers(members);
           if (members) {
-            console.log("Family members:", members.familyMembers)
+            console.log("Family members:", members.familyMembers);
             if (members.familyMembers.length > 0) {
               const usersInfo = await GetAllUserInfoFromFamilyMembers(
                 members.familyMembers
               );
-              console.log("Users info:", usersInfo)
+              console.log("Users info:", usersInfo);
               setUsersInfo(usersInfo);
             }
           }
@@ -100,10 +101,16 @@ function Home() {
           Controle Financeiro - {familyMembers?.familyName}
         </h1>
       </div>
-      <div className=" mt-4 mb-4 flex gap-4">
+      <div className=" mt-4 mb-4 flex gap-4 flex-wrap">
         {usersInfo.map((user, index) => (
           <Avatar key={index} userInfo={user} />
         ))}
+        <button
+          className="w-fit bg-gray-200 p-6 rounded-full hover:opacity-60"
+          onClick={() => console.log("adicionar novo membro na familia")}
+        >
+          <Add />
+        </button>
       </div>
       <div className="flex gap-2 flex-wrap mt-4">
         <Card
