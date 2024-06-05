@@ -15,7 +15,10 @@ function MainRoutes() {
       <Route path="/login" element={<Login />} index />
       <Route element={<ProtectedBaseLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/operacoes" element={<Transactions />} />
+        <Route path="/controle-anual" element={<Transactions />} />
+        <Route path="/ganhos" element={<Transactions />} />
+        <Route path="/gastos" element={<Transactions />} />
+        <Route path="/cartoes-de-credito" element={<Transactions />} />
         <Route path="/investimentos" element={<Investments />} />
       </Route>
     </Routes>

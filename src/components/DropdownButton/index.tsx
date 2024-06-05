@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { PiChartLineDown, PiChartLineUp } from "react-icons/pi";
 import ExpenseDialog from "../DialogModal/ExpenseDialog";
+import InvestmentDialog from "../DialogModal/InvestmentDialog";
 
 const DropdownButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -18,6 +19,7 @@ const DropdownButton = () => {
   };
 
   const [isExpenseModalOpen, setIsExpenseModalOpen] = useState(false);
+  const [isInvestmentModalOpen, setIsInvestmentModalOpen] = useState(false);
 
   const handleOpenExpenseModal = () => {
     console.log("open expense modal");
@@ -29,11 +31,23 @@ const DropdownButton = () => {
     setIsExpenseModalOpen(false);
   };
 
+  const handleOpenInvestmentModal = () => {
+    console.log("open investment modal");
+    setIsInvestmentModalOpen(true);
+  };
+
+  const handleCloseInvestmentModal = () => {
+    setIsInvestmentModalOpen(false);
+  };
   return (
     <div>
       <ExpenseDialog
         isOpen={isExpenseModalOpen}
         handleClose={handleCloseExpenseModal}
+      />
+      <InvestmentDialog
+        isOpen={isInvestmentModalOpen}
+        handleClose={handleCloseInvestmentModal}
       />
       <button
         className="flex items-center gap-4 p-4 rounded-full text-white font-sans text-lg bg-[#373f51] w-fit min-w-[150px]
@@ -59,7 +73,7 @@ const DropdownButton = () => {
         }}
       >
         <MenuItem
-          onClick={()=> console.log('receita')}
+          onClick={() => console.log("receita")}
           className="flex flex-row gap-4"
         >
           <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
@@ -67,13 +81,19 @@ const DropdownButton = () => {
             Receitas
           </div>
         </MenuItem>
-        <MenuItem onClick={handleOpenExpenseModal} className="flex flex-row gap-4">
+        <MenuItem
+          onClick={handleOpenExpenseModal}
+          className="flex flex-row gap-4"
+        >
           <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
             <PiChartLineDown color="#ff5454" />
             Despesas
           </div>
         </MenuItem>
-        <MenuItem onClick={handleClose} className="flex flex-row gap-4">
+        <MenuItem
+          onClick={handleOpenInvestmentModal}
+          className="flex flex-row gap-4"
+        >
           <div className="flex flex-row gap-4 justify-center items-center text-[18px]">
             <GrTransaction color="#616161" />
             Investimento
